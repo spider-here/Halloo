@@ -1,11 +1,12 @@
 import 'package:flutter/material.dart';
-
+import 'Activities/Home/Home.dart';
+import 'Activities/Registeration/PhoneRegistration/PhoneVerificationPage.dart';
 import 'Activities/Splash.dart';
 
 void main() {
   runApp(MaterialApp(
     title:"Halloo",
-    home: Splash(),
+    home: Home(),
     theme: ThemeData(
       primaryColor: Color(0xFFF59823),
       elevatedButtonTheme: ElevatedButtonThemeData(
