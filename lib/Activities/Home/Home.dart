@@ -34,49 +34,12 @@ class HomeState extends State {
         children: [
           Align(
             alignment: FractionalOffset.topCenter,
-            child: Column(children: [
-              Container(
-              decoration: BoxDecoration(color: Theme.of(context).primaryColor,
-                  borderRadius: BorderRadius.only(bottomLeft: Radius.circular(20.0), bottomRight: Radius.circular(20.0))),
-              child: Padding(padding: EdgeInsets.fromLTRB(10.0,50.0,10.0,10.0),
-                child: Row(
-                  mainAxisAlignment: MainAxisAlignment.center,
-                crossAxisAlignment: CrossAxisAlignment.center,
-                children: [
-                  Text("CHAT", style: TextStyle(fontSize: 20.0, color: Colors.white),),
-                  Spacer(),
-                  Container(decoration: BoxDecoration(
-                    borderRadius: BorderRadius.circular(15.0),
-                    color: Colors.white,
-                  ),
-                    child: SizedBox(
-                      width: MediaQuery.of(context).size.width/1.5,
-                      height: 40.0,
-                      child: TextField(
-                        keyboardType: TextInputType.number,
-                        style: TextStyle(fontSize: 16.0),
-                        decoration: InputDecoration(
-                            border: InputBorder.none,
-                            hintText: "Search",
-                            prefixIcon: Icon(Icons.search, color: Theme.of(context).primaryColor,),
-                            contentPadding: EdgeInsets.all(5.0)),
-                      ),
-                    )),
-                  Spacer(),
-                  InkWell(
-                    child: Icon(Icons.settings, color: Colors.white),
-                  )
-                ],
-              ),),
+            child:  SizedBox(
+              width: MediaQuery.of(context).size.width,
+              height: MediaQuery.of(context).size.height,
+              child: PageView(controller: _pageController,
+                children: [ChatHome(), CallHome(), SMSRecoveryHome(), ProfileHome(),],),
             ),
-              SizedBox(
-                width: MediaQuery.of(context).size.width,
-                height: MediaQuery.of(context).size.height/1.2,
-                child: PageView(controller: _pageController,
-                  children: [ChatHome(), CallHome(), SMSRecoveryHome(), ProfileHome(),],),
-              )
-
-            ],)
           ),
           Align(
             alignment: FractionalOffset.bottomCenter,
@@ -116,7 +79,7 @@ class HomeState extends State {
                       Icons.chat,
                       color: Theme.of(context).primaryColor,
                     ),
-                    label: "Cart"),
+                    label: "Recover SMS"),
                 BottomNavigationBarItem(
                     icon: Icon(
                       Icons.person,

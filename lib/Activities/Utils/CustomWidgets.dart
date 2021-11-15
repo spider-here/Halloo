@@ -16,32 +16,171 @@ class CustomWidgets {
           children: [
             ListTile(
               leading: SizedBox(
-                width: MediaQuery.of(context).size.width/5,
+                width: MediaQuery.of(context).size.width / 5,
                 child: Stack(children: [
-                Container(
-                  decoration: BoxDecoration(
-                      image: DecorationImage(
-                          image: NetworkImage(imgURL), fit: BoxFit.fill),
-                      shape: BoxShape.circle,
-                  border: Border.all(color: Theme.of(context).primaryColor,width: 3.0, style: BorderStyle.solid)),
-                ),
-                Align(
-                    alignment: FractionalOffset.bottomRight,
-                    child: Padding(padding: EdgeInsets.only(bottom: 6.0, right: 10.0), child: onlineIndicator(onlineStatus)))
-              ]),),
+                  Container(
+                    decoration: BoxDecoration(
+                        image: DecorationImage(
+                            image: NetworkImage(imgURL), fit: BoxFit.fill),
+                        shape: BoxShape.circle,
+                        border: Border.all(
+                            color: Theme.of(context).primaryColor,
+                            width: 3.0,
+                            style: BorderStyle.solid)),
+                  ),
+                  Align(
+                      alignment: FractionalOffset.bottomRight,
+                      child: Padding(
+                          padding: EdgeInsets.only(bottom: 6.0, right: 10.0),
+                          child: onlineIndicator(onlineStatus)))
+                ]),
+              ),
               title: Row(
                 children: [
-                  Text(contactName, style: TextStyle(color: Colors.black, fontWeight: FontWeight.bold),),
-                  Padding(padding: EdgeInsets.only(left: 10.0),),
+                  Text(
+                    contactName,
+                    style: TextStyle(
+                        color: Colors.black, fontWeight: FontWeight.bold),
+                  ),
+                  Padding(
+                    padding: EdgeInsets.only(left: 10.0),
+                  ),
                   unreadMessageIndicator(context, unreadMessage)
                 ],
               ),
-              subtitle: Text(lastMessage, style: TextStyle(color: Colors.grey),),
-              trailing: Text(lastChatTime, style: TextStyle(color: Colors.black),),
+              subtitle: Text(
+                lastMessage,
+                style: TextStyle(color: Colors.grey),
+              ),
+              trailing: Text(
+                lastChatTime,
+                style: TextStyle(color: Colors.black),
+              ),
             ),
             Divider(color: Colors.grey)
           ],
         ));
+  }
+
+  Widget callHistoryContact(BuildContext context, String contactName,
+      String imgURL, bool onlineStatus, String lastCallTime, bool videoCall) {
+    return new Container(
+        color: Colors.white,
+        width: MediaQuery.of(context).size.width,
+        child:
+            ListTile(
+              leading: SizedBox(
+                width: MediaQuery.of(context).size.width / 5,
+                child: Stack(children: [
+                  Container(
+                    decoration: BoxDecoration(
+                        image: DecorationImage(
+                            image: NetworkImage(imgURL), fit: BoxFit.fill),
+                        shape: BoxShape.circle,
+                        border: Border.all(
+                            color: Theme.of(context).primaryColor,
+                            width: 3.0,
+                            style: BorderStyle.solid)),
+                  ),
+                  Align(
+                      alignment: FractionalOffset.bottomRight,
+                      child: Padding(
+                          padding: EdgeInsets.only(bottom: 6.0, right: 10.0),
+                          child: onlineIndicator(onlineStatus)))
+                ]),
+              ),
+              title: Text(
+                contactName,
+                style:
+                    TextStyle(color: Colors.black, fontWeight: FontWeight.bold),
+              ),
+              subtitle: Text(
+                lastCallTime,
+                style: TextStyle(color: Colors.grey),
+              ),
+              trailing: TextButton.icon(
+                  onPressed: () {},
+                  icon: getCallTypeIcon(videoCall),
+                  label: Text(""),
+                  style: ButtonStyle(
+                      overlayColor: MaterialStateProperty.all(Colors.black12))),
+        ));
+  }
+
+  Widget callHistoryChat(BuildContext context, String contactName,
+      String imgURL, String lastCallTime, bool videoCall) {
+    return new Container(
+        color: Colors.white,
+        width: MediaQuery.of(context).size.width,
+        child:
+        ListTile(
+          leading: SizedBox(
+            width: MediaQuery.of(context).size.width / 5,
+            child: Container(
+                decoration: BoxDecoration(
+                    image: DecorationImage(
+                        image: NetworkImage(imgURL), fit: BoxFit.fill),
+                    shape: BoxShape.circle,
+                    border: Border.all(
+                        color: Theme.of(context).primaryColor,
+                        width: 3.0,
+                        style: BorderStyle.solid)),
+              ),
+          ),
+          title: Text(
+            contactName,
+            style:
+            TextStyle(color: Colors.black, fontWeight: FontWeight.bold),
+          ),
+          subtitle: Text(
+            lastCallTime,
+            style: TextStyle(color: Colors.grey),
+          ),
+          trailing: TextButton.icon(
+              onPressed: () {},
+              icon: getCallTypeIcon(videoCall),
+              label: Text(""),
+              style: ButtonStyle(
+                  overlayColor: MaterialStateProperty.all(Colors.black12))),
+        ));
+  }
+
+  Widget contactItem(
+    BuildContext context,
+    String contactName,
+    String imgURL,
+    String phoneNumber,
+  ) {
+    return new Container(
+        color: Colors.white,
+        width: MediaQuery.of(context).size.width,
+        child:
+            ListTile(
+              leading: SizedBox(
+                width: MediaQuery.of(context).size.width / 5,
+                child:
+                  Container(
+                    decoration: BoxDecoration(
+                        image: DecorationImage(
+                            image: NetworkImage(imgURL), fit: BoxFit.fill),
+                        shape: BoxShape.circle,
+                        border: Border.all(
+                            color: Theme.of(context).primaryColor,
+                            width: 3.0,
+                            style: BorderStyle.solid)),
+                  ),
+              ),
+              title: Text(
+                contactName,
+                style:
+                    TextStyle(color: Colors.black, fontWeight: FontWeight.bold),
+              ),
+              subtitle: Text(
+                phoneNumber,
+                style: TextStyle(color: Colors.grey),
+              ),
+            ),
+        );
   }
 
   Widget onlineIndicator(bool onlineStatus) {
@@ -73,4 +212,65 @@ class CustomWidgets {
     }
     return widget;
   }
+
+  Widget getCallTypeIcon(bool videoCall) {
+    Widget callIcon = Icon(
+      Icons.call,
+      color: Colors.grey,
+    );
+
+    if (videoCall) {
+      callIcon = Icon(
+        Icons.videocam,
+        color: Colors.grey,
+      );
+    }
+
+    return callIcon;
+  }
+
+  Widget callHistoryDetailContainer (BuildContext context){
+    return new Container(
+      width: MediaQuery.of(context).size.width/1.1,
+      height: MediaQuery.of(context).size.height/1.3,
+      decoration: BoxDecoration(
+        borderRadius: BorderRadius.circular(15.0),
+        color: Colors.white
+      ),
+      child: Padding(padding: EdgeInsets.all(5.0), child:
+      Column(
+          children: [ListTile(
+            leading: Text("Call History"),
+            trailing: InkWell(
+              child: Icon(Icons.close, color: Colors.black,),
+              onTap: (){},
+            ),
+          ),]
+      ),)
+    );
+  }
+
+  Widget chatSettings (BuildContext context){
+    return new Container(
+        width: MediaQuery.of(context).size.width/1.1,
+        decoration: BoxDecoration(
+            borderRadius: BorderRadius.circular(15.0),
+            color: Colors.white
+        ),
+        child: Padding(padding: EdgeInsets.all(5.0), child: Column(
+          children: [ListTile(
+            leading: Icon(Icons.block),
+            title: Text("Block User"),
+            onTap: (){},
+          ),
+          ListTile(
+            leading: Icon(Icons.delete_sweep),
+            title: Text("Recover Deleted SMS"),
+            onTap: (){}
+          )],
+        )
+        )
+    );
+  }
+
 }

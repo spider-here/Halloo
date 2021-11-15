@@ -15,7 +15,7 @@ class SMSRecoveryHomeState extends State{
     return new Container(
       width: MediaQuery.of(context).size.width,
       height: MediaQuery.of(context).size.height/1.2,
-      color: Colors.yellow,
+      color: Colors.white,
     );
   }
 
