@@ -24,55 +24,55 @@ class ChatHomeState extends State{
 
   @override
   Widget build(BuildContext context) {
-    return new Container(
+    return new SingleChildScrollView(child: Container(
         color: Colors.white,
         child: Column(children: [
-              Container(
-                decoration: BoxDecoration(color: Theme.of(context).primaryColor,
-                    borderRadius: BorderRadius.only(bottomLeft: Radius.circular(20.0), bottomRight: Radius.circular(20.0))),
-                child: Padding(padding: EdgeInsets.fromLTRB(10.0,50.0,10.0,10.0),
-                  child: Row(
-                    mainAxisAlignment: MainAxisAlignment.center,
-                    crossAxisAlignment: CrossAxisAlignment.center,
-                    children: [
-                      Text("CHAT", style: TextStyle(fontSize: 20.0, color: Colors.white),),
-                      Spacer(),
-                      Container(decoration: BoxDecoration(
-                        borderRadius: BorderRadius.circular(20.0),
-                        color: Colors.white,
-                      ),
-                          child: SizedBox(
-                            width: MediaQuery.of(context).size.width/1.5,
-                            height: 40.0,
-                            child: TextField(
-                              style: TextStyle(fontSize: 16.0),
-                              decoration: InputDecoration(
-                                  border: InputBorder.none,
-                                  hintText: "Search",
-                                  prefixIcon: Icon(Icons.search, color: Theme.of(context).primaryColor,),
-                                  contentPadding: EdgeInsets.all(5.0)),
-                            ),
-                          )),
-                      Spacer(),
-                      InkWell(
-                        child: Icon(Icons.settings, color: Colors.white),
-                      )
-                    ],
-                  ),),
-              ),
-        SizedBox(
-            height: MediaQuery.of(context).size.height/1.2,
+          Container(
+            decoration: BoxDecoration(color: Theme.of(context).primaryColor,
+                borderRadius: BorderRadius.only(bottomLeft: Radius.circular(20.0), bottomRight: Radius.circular(20.0))),
+            child: Padding(padding: EdgeInsets.fromLTRB(10.0,60.0,10.0,10.0),
+              child: Row(
+                mainAxisAlignment: MainAxisAlignment.center,
+                crossAxisAlignment: CrossAxisAlignment.center,
+                children: [
+                  Text("CHAT", style: TextStyle(fontSize: 20.0, color: Colors.white),),
+                  Spacer(),
+                  Container(decoration: BoxDecoration(
+                    borderRadius: BorderRadius.circular(20.0),
+                    color: Colors.white,
+                  ),
+                      child: SizedBox(
+                        width: MediaQuery.of(context).size.width/1.5,
+                        height: 40.0,
+                        child: TextField(
+                          style: TextStyle(fontSize: 16.0),
+                          decoration: InputDecoration(
+                              border: InputBorder.none,
+                              hintText: "Search",
+                              prefixIcon: Icon(Icons.search, color: Theme.of(context).primaryColor,),
+                              contentPadding: EdgeInsets.all(5.0)),
+                        ),
+                      )),
+                  Spacer(),
+                  InkWell(
+                    child: Icon(Icons.settings, color: Colors.white),
+                  )
+                ],
+              ),),
+          ),
+          SizedBox(
+            height: MediaQuery.of(context).size.height/1.3,
             child: ListView.builder(
                 itemCount: contactName.length,
-                physics: AlwaysScrollableScrollPhysics(),
+                physics: BouncingScrollPhysics(),
                 itemBuilder: (BuildContext context, index){
                   return _customWidgets.chatContact(context, contactName[index], imgURL[index],
                       onlineStatus[index], unreadMessage[index], lastChatTime[index], lastMessage[index]);
                 }),)
 
 
-      ],)
-    );
+        ],)
+    ),);
   }
 
 }

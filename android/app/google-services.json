@@ -1,0 +1,48 @@
+{
+  "project_info": {
+    "project_number": "51235491609",
+    "firebase_url": "https://halloo-b62db-default-rtdb.firebaseio.com",
+    "project_id": "halloo-b62db",
+    "storage_bucket": "halloo-b62db.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:51235491609:android:d9a2cee3e9261df30cbf88",
+        "android_client_info": {
+          "package_name": "com.spider.halloo"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "51235491609-2mabmk5cscnvbhel2n8mhhq8nptfjbtr.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.spider.halloo",
+            "certificate_hash": "80f0bd21c386025e1482cbd1e38ed08e02b2d90e"
+          }
+        },
+        {
+          "client_id": "51235491609-v8fneckkqrhffjkccgbq0nvl3rfihgf9.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyDTUrBWnUeXsMJrqJun7YQQzk4kdzBhhGo"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "51235491609-v8fneckkqrhffjkccgbq0nvl3rfihgf9.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

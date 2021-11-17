@@ -23,13 +23,13 @@ class CallHomeState extends State{
 
   @override
   Widget build(BuildContext context) {
-    return new Container(
+    return new SingleChildScrollView(child: Container(
         color: Colors.white,
         child: Column(children: [
           Container(
             decoration: BoxDecoration(color: Theme.of(context).primaryColor,
                 borderRadius: BorderRadius.only(bottomLeft: Radius.circular(20.0), bottomRight: Radius.circular(20.0))),
-            child: Padding(padding: EdgeInsets.fromLTRB(10.0,50.0,10.0,10.0),
+            child: Padding(padding: EdgeInsets.fromLTRB(10.0,60.0,10.0,10.0),
               child: Row(
                 mainAxisAlignment: MainAxisAlignment.center,
                 crossAxisAlignment: CrossAxisAlignment.center,
@@ -56,7 +56,7 @@ class CallHomeState extends State{
               ),),
           ),
           SizedBox(
-            height: MediaQuery.of(context).size.height/1.2,
+            height: MediaQuery.of(context).size.height/1.3,
             child: ListView.builder(
                 itemCount: contactName.length,
                 physics: BouncingScrollPhysics(),
@@ -67,7 +67,7 @@ class CallHomeState extends State{
 
 
         ],)
+    )
     );
   }
-
 }

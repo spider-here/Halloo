@@ -1,6 +1,8 @@
 import 'package:flutter/material.dart';
+import 'package:halloo/Activities/Chat/Chat.dart';
 
 class CustomWidgets {
+
   Widget chatContact(
       BuildContext context,
       String contactName,
@@ -56,6 +58,7 @@ class CustomWidgets {
                 lastChatTime,
                 style: TextStyle(color: Colors.black),
               ),
+              onTap: ()=>Navigator.push(context, MaterialPageRoute(builder: (context)=>Chat())),
             ),
             Divider(color: Colors.grey)
           ],
@@ -104,6 +107,10 @@ class CustomWidgets {
                   label: Text(""),
                   style: ButtonStyle(
                       overlayColor: MaterialStateProperty.all(Colors.black12))),
+              onTap: (){Dialog dialog = Dialog(
+                shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(15.0)),
+                child: callHistoryDetailContainer(context));
+              showDialog(context: context, builder: (context)=>dialog);},
         ));
   }
 
@@ -233,10 +240,7 @@ class CustomWidgets {
     return new Container(
       width: MediaQuery.of(context).size.width/1.1,
       height: MediaQuery.of(context).size.height/1.3,
-      decoration: BoxDecoration(
-        borderRadius: BorderRadius.circular(15.0),
-        color: Colors.white
-      ),
+      color: Colors.white,
       child: Padding(padding: EdgeInsets.all(5.0), child:
       Column(
           children: [ListTile(

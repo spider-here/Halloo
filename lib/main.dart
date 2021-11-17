@@ -1,14 +1,13 @@
+import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter/material.dart';
-import 'package:halloo/Activities/Call/CallPending.dart';
-import 'Activities/Chat/Chat.dart';
-import 'Activities/Chat/ChatProfile.dart';
-import 'Activities/Home/Home.dart';
 import 'Activities/Splash.dart';
 
-void main() {
+void main() async{
+  WidgetsFlutterBinding.ensureInitialized();
+  await Firebase.initializeApp();
   runApp(MaterialApp(
     title:"Halloo",
-    home: Chat(),
+    home: Splash(),
     theme: ThemeData(
       primaryColor: Color(0xFFF59823),
       elevatedButtonTheme: ElevatedButtonThemeData(

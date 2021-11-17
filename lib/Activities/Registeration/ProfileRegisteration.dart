@@ -1,3 +1,4 @@
+import 'package:country_code_picker/country_code_picker.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 
@@ -90,14 +91,26 @@ class ProfileRegState extends State{
                             decoration: BoxDecoration(
                                 border: Border.all(color: Colors.black),
                                 borderRadius: BorderRadius.circular(5.0)),
-                            child: TextField(
-                              keyboardType: TextInputType.number,
-                              style: TextStyle(fontSize: 16.0),
-                              decoration: InputDecoration(
-                                  border: InputBorder.none,
-                                  hintText: "Phone Number",
-                                  contentPadding: EdgeInsets.all(5.0)),
-                            )
+                            child: Row(children: [
+                              SizedBox(
+                                width: MediaQuery.of(context).size.width/3,
+                                child: CountryCodePicker(
+                                  onChanged: print,
+                                  // Initial selection and favorite can be one of code ('IT') OR dial_code('+39')
+                                  initialSelection: 'PK',
+                                  favorite: ['+92','PK'],
+                                  alignLeft: true,
+                                ),
+                              ),
+                              SizedBox(width:MediaQuery.of(context).size.width/2,
+                                  child: TextField(
+                                    keyboardType: TextInputType.number,
+                                    style: TextStyle(fontSize: 16.0),
+                                    decoration: InputDecoration(
+                                        border: InputBorder.none,
+                                        hintText: "Phone Number",
+                                        contentPadding: EdgeInsets.all(5.0)),
+                                  ))],)
                         ),
                         Padding(
                           padding: EdgeInsets.all(10.0),

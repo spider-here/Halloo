@@ -1,5 +1,8 @@
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
     package="com.spider.halloo">
+
+    <uses-permission android:name="android.permission.INTERNET" />
+
    <application
         android:label="halloo"
         android:icon="@mipmap/ic_launcher">
