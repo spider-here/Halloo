@@ -1,5 +1,6 @@
 import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter/material.dart';
+import 'Activities/Registeration/ProfileRegisteration.dart';
 import 'Activities/Splash.dart';
 
 void main() async{
